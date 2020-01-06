@@ -133,20 +133,6 @@ void bored::output(){
             }
         }
     }
-    switch((*current_play).board[(i*3)+n]){
-        case X:
-            cout << "X ";
-            return;
-        case O:
-            cout << "O ";
-            return;
-        case _:
-            cout << "_ ";
-            return;
-        default:
-            cout << "? ";
-            return;
-    }
 }
 void bored::player_call(node* current){
     if((*current).turn){
