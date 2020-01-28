@@ -120,22 +120,76 @@ void bored::output(){
             switch((*current_play).board[(i*3)+n]){
                 case X:
                     cout << "X ";
-                    return;
+                    continue;
                 case O:
                     cout << "O ";
-                    return;
+                    continue;
                 case _:
                     cout << "_ ";
-                    return;
+                    continue;
                 default:
                     cout << "? ";
-                    return;
             }
         }
+        cout << endl;
     }
 }
 void bored::player_call(node* current){
     if((*current).turn){
+        cout << "X turn" << endl;
+    }else{
+        cout << "O turn" << endl;
+    }
+    return;
+}
+
+void bored::play(int number){
+    if((*current_play).board[number-1] == _){
+        current_play = (*current_play).childs[number-1];
+    }else{
+        cout << "invalid play" << endl;
+    }
+}
+bool bored::check(){
+    if((*current_play).win != _){
+        win_output();
+        return false;
+    }else{
+        return true;
+    }
+}
+void bored::win_output(){
+    if((*current_play).win == X){
+        cout << "X wins" << endl;
+    }else if((*current_play).win == O){
+        cout << "O wins" << endl;
+    }else if((*current_play).win == T){
+        cout << "Tie" << endl;
+    }
+    return;
+}
+void bored::set_bot(int pl, bot_state bstate){
+    switch(pl){
+        case 1:
+            A.set_bot(bstate);
+            return;
+        case 2:
+            B.set_bot(bstate);
+            return;
+        default:
+            cout << "Unknown player" << endl;
+            return;
+    }
+}
+bot_state bored::getbot(){
+    if((*current_play).turn){
+        return A.get_bot();
+    }else{
+        return B.get_bot();
+    }
+}
+void bored::indicator(){
+    if((*current_play).turn){
         cout << "X turn" << endl;
     }else{
         cout << "O turn" << endl;

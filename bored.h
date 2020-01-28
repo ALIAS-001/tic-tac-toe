@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdlib.h>
 #include "./node.h"
 #include "./enum.h"
 #include "./player.h"
@@ -10,7 +11,16 @@ public:
     symbols generate2(node*);
     symbols board_win(node*);
 
+    void set_bot(int,bot_state);
+    bot_state getbot();
+    bool check();
+    void win_output();
+    void indicator();
+
+    void AI();
+
     void ouptut();
+    void play(int);
 
     void navagate();
     void player_call(node*);

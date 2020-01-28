@@ -1,2 +1,2 @@
 language = "cpp"
-run = "clang++-7 -pthread -o main bored.cpp main.cpp navagate.cpp node.cpp player.cpp; ./main"
+run = "clang++-7 -pthread -o main bored.cpp main.cpp navagate.cpp node.cpp player.cpp AI.cpp; ./main"
